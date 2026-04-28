@@ -18,7 +18,7 @@ export default function Footer() {
             />
           </div>
           <p className="text-slate-400 text-sm max-w-sm mb-8 leading-relaxed">
-            © 2024 GoPay México. Tu celular nuevo en 5 minutos, sin salir de casa. Transformando el acceso a la tecnología en México.
+            © 2026 GoPay México. Tu celular nuevo en 5 minutos, sin salir de casa. Transformando el acceso a la tecnología en México.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-8 py-8 border-t border-slate-900 text-center">
-        <p className="text-slate-600 text-xs">GoPay es una marca registrada. Todos los derechos reservados 2024.</p>
+        <p className="text-slate-600 text-xs">GoPay es una marca registrada. Todos los derechos reservados 2026.</p>
       </div>
     </footer>
   );

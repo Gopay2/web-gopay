@@ -53,7 +53,7 @@ export default function BrandsSection() {
           <div className="relative z-10">
             <h3 className="font-headline text-2xl font-bold mb-4 text-secondary">Aprobación inmediata</h3>
             <p className="text-on-surface-variant mb-8 text-lg max-w-2xl">
-              Obtén tu crédito GoPay hoy mismo y accede a más de 50 modelos disponibles de las marcas que más te gustan. El proceso es 100% digital y seguro.
+              Obtén tu crédito GoPay hoy mismo y accede a más de 20 modelos disponibles de las marcas que más te gustan. El proceso es 100% digital y seguro.
             </p>
             <button className="bg-secondary text-on-secondary-fixed px-8 py-3 rounded-md font-bold hover:scale-105 transition-all flex items-center gap-2">
               <span className="material-symbols-outlined text-xl" aria-hidden="true">bolt</span>
