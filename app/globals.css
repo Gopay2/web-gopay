@@ -49,10 +49,10 @@
   --color-on-error: #690005;
   --color-on-tertiary-fixed-variant: #7a3000;
 
-  --font-headline: var(--font-manrope);
-  --font-display: var(--font-manrope);
-  --font-body: var(--font-inter);
-  --font-label: var(--font-inter);
+  --font-headline: var(--font-roboto);
+  --font-display: var(--font-roboto);
+  --font-body: var(--font-roboto);
+  --font-label: var(--font-roboto);
 }
 
 @utility glass-effect {
