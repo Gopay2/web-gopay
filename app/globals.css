@@ -67,3 +67,14 @@
   'GRAD' 0,
   'opsz' 24;
 }
+
+@keyframes peek-slide {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-40px); }
+  60% { transform: translateX(15px); }
+  80% { transform: translateX(-5px); }
+}
+
+.animate-peek {
+  animation: peek-slide 2.5s ease-in-out 1s;
+}

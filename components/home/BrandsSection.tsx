@@ -14,11 +14,11 @@ interface Brand {
  */
 export default function BrandsSection() {
   const brands: Brand[] = [
-    { name: "Apple", icon: "phone_iphone" },
-    { name: "Samsung", icon: "smartphone" },
-    { name: "Xiaomi", icon: "bolt" },
-    { name: "Motorola", icon: "grid_view" },
-    { name: "HONOR", icon: "rocket_launch" },
+    { name: "Apple", icon: "/brands/apple.webp" },
+    { name: "Samsung", icon: "/brands/samsung.webp" },
+    { name: "Xiaomi", icon: "/brands/xiaomi.webp" },
+    { name: "Motorola", icon: "/brands/moto.webp" },
+    { name: "HONOR", icon: "/brands/honor.webp" },
   ];
 
   return (
@@ -36,10 +36,12 @@ export default function BrandsSection() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-20 opacity-60">
           {brands.map((brand, index) => (
             <div key={index} className="flex flex-col items-center gap-4 grayscale hover:grayscale-0 transition-all duration-500">
-              <div className="w-20 h-20 bg-surface-container rounded-2xl flex items-center justify-center">
-                <span className="material-symbols-outlined text-4xl" aria-hidden="true">
-                  {brand.icon}
-                </span>
+              <div className="w-28 h-28 bg-surface-container rounded-2xl flex items-center justify-center p-2">
+                <img 
+                  src={brand.icon} 
+                  alt={`${brand.name} logo`} 
+                  className="max-w-[80%] max-h-[80%] object-contain" 
+                />
               </div>
               <span className="font-bold text-sm tracking-widest uppercase">{brand.name}</span>
             </div>

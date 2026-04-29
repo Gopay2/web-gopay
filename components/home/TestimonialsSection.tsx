@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 
 /**
  * Interface representing a customer testimonial
@@ -20,13 +21,15 @@ function TestimonialCard({ quote, authorName, authorInitial, authorRole, colorTh
   const roleColorClass = colorTheme === "secondary" ? "text-secondary" : "text-tertiary";
 
   return (
-    <article className={`relative p-10 bg-surface-container-low rounded-2xl border-l-4 ${borderClass} shadow-2xl`}>
-      <span className={`material-symbols-outlined ${iconColorClass} text-6xl absolute top-6 right-8`} aria-hidden="true">
-        format_quote
-      </span>
-      <p className="text-xl italic leading-relaxed mb-8 relative z-10">"{quote}"</p>
+    <article className={`relative p-10 bg-surface-container-low rounded-2xl border-l-4 ${borderClass} shadow-2xl h-full flex flex-col justify-between`}>
+      <div>
+        <span className={`material-symbols-outlined ${iconColorClass} text-6xl absolute top-6 right-8`} aria-hidden="true">
+          format_quote
+        </span>
+        <p className="text-xl italic leading-relaxed mb-8 relative z-10">"{quote}"</p>
+      </div>
       <div className="flex items-center gap-4">
-        <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center font-bold text-white">
+        <div className="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center font-bold text-white flex-shrink-0">
           {authorInitial}
         </div>
         <div>
@@ -43,6 +46,24 @@ function TestimonialCard({ quote, authorName, authorInitial, authorRole, colorTh
  * Displays social proof and customer testimonials.
  */
 export default function TestimonialsSection() {
+  const [hasIntersected, setHasIntersected] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setHasIntersected(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1 });
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const testimonials: Testimonial[] = [
     {
       quote: "Es un proceso muy sencillo, rápido y fácil de entender. Solo necesitas tu INE y una foto para comenzar. Lo recomiendo al 100%.",
@@ -58,18 +79,36 @@ export default function TestimonialsSection() {
       authorRole: "Cliente verificado",
       colorTheme: "tertiary",
     },
+    {
+      quote: "La atención al cliente es increíble. Tuve dudas con mi plan de pagos y me resolvieron todo por WhatsApp al instante. Muy buena experiencia.",
+      authorName: "Roberto M.",
+      authorInitial: "R",
+      authorRole: "Cliente verificado",
+      colorTheme: "secondary",
+    },
+    {
+      quote: "Pensé que no me aprobarían por no tener historial crediticio, pero con mi INE fue suficiente. Ya tengo mi celular nuevo. ¡Mil gracias!",
+      authorName: "Sofía L.",
+      authorInitial: "S",
+      authorRole: "Cliente verificado",
+      colorTheme: "tertiary",
+    },
   ];
 
   return (
-    <section className="py-32 bg-surface overflow-hidden" id="testimonials">
+    <section ref={sectionRef} className="py-32 bg-surface overflow-hidden" id="testimonials">
       <div className="max-w-7xl mx-auto px-6">
         <header className="text-center mb-20">
           <h2 className="font-headline text-4xl font-extrabold mb-4">Clientes satisfechos</h2>
           <p className="text-on-surface-variant">Millones de personas ya confían en nuestro sistema de crédito.</p>
         </header>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        {/* Mobile Swipeable Carousel / Desktop Grid */}
+        <div className={`flex md:grid md:grid-cols-2 gap-6 md:gap-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-6 md:pb-0 ${hasIntersected ? "animate-peek" : ""} md:animate-none [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]`}>
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} />
+            <div key={index} className="w-[85vw] sm:w-[75vw] md:w-full flex-shrink-0 snap-center">
+              <TestimonialCard {...testimonial} />
+            </div>
           ))}
         </div>
       </div>

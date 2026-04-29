@@ -4,7 +4,7 @@ const styles = {
   brandSection: "pt-28 pb-12 bg-slate-950 flex items-center justify-center border-b border-white/5",
   brandContainer: "max-w-7xl mx-auto px-6 text-center animate-in fade-in slide-in-from-top-4 duration-1000 relative",
   brandGlow: "absolute w-72 h-72 bg-[#3CD7FF]/40 rounded-full blur-[100px] -z-10 left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2",
-  brandLogo: "w-auto mx-auto object-contain drop-shadow-[0_0_40px_rgba(60,215,255,0.6)] relative z-10 h-32 md:h-48",
+  brandLogo: "w-auto mx-auto object-contain drop-shadow-[0_0_40px_rgba(60,215,255,0.6)] relative z-10 h-55 md:h-65",
   brandLabelContainer: "mt-4 flex items-center justify-center gap-2",
   brandLine: "h-px w-8 bg-secondary/30",
   brandLabel: "text-secondary text-xs font-bold tracking-[0.3em] uppercase md:text-sm lg:text-base",
@@ -76,7 +76,7 @@ function HeroMain() {
           <img
             alt="Smartphones premium"
             className={styles.heroImage}
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpWCdVA3zOQZ3BQwRt9Sqsx4kS125Hv90vPep3ScP6GCi5soBmGkYblEdYiafB7scGuXYjzNETWbSYkkFf8wrFtRG-EYHP2g0eG-CL8BLJ9LM1aGjlX5WszhZQOmQhY-Cuii53GPs0sKNGFZ_QePbhBff-oXkKwyj7nabfaM0A2jVE-hwG9FBBRGPusQGJdAFBKJzQ3aPiGWUV5ctKUZ3NPKnDtHtCcckf7j8TLkbtyiAM8ISJzX3_U6QZf7U0MP1_EoK_evE-018"
+            src="/brands/hero-image.webp"
           />
         </div>
       </div>
