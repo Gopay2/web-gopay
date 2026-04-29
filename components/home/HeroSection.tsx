@@ -18,7 +18,10 @@ const styles = {
   
   heroImageContainer: "relative lg:h-[600px] flex items-center justify-center",
   heroImageGlow: "absolute w-[120%] h-[120%] bg-secondary/10 rounded-full blur-[100px] -z-10 animate-pulse",
-  heroImage: "w-full h-full object-contain drop-shadow-[0_35px_35px_rgba(0,18,63,0.5)] transform hover:scale-105 transition-transform duration-700"
+  heroImage: "w-full max-w-sm md:max-w-md lg:max-w-none mx-auto h-full object-contain drop-shadow-[0_35px_35px_rgba(0,18,63,0.5)] transform hover:scale-105 transition-transform duration-700",
+  
+  counterWrapper: "flex flex-col justify-center lg:justify-start items-start gap-2 mt-6",
+  counterPill: "inline-flex items-center gap-1.5 px-4 py-2 bg-surface-container-high border border-outline-variant/20 rounded-full animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 shadow-md font-extrabold text-secondary text-lg",
 };
 
 /**
@@ -33,7 +36,7 @@ function BrandIntroduction() {
         <img
           alt="GoPay Brand Logo"
           className={styles.brandLogo}
-          src="https://lh3.googleusercontent.com/aida/ADBb0uh6hzUjZCMnRQB2PP1w9wVrWu0iKRRol8bIm_zAu15EKcMZt6AeZxc8Ek0IJf78o28ibBuYTCDmUXACYvK73u1CzX1H2Z4w9piVC1XxsqivLXV2dpjFZuK_u0i3LCz7WgYtQ8g7hOc9dRUdMe1n-fktWL0g8rnCmVR5ZHq3jvffiYRUUlZNeGfrfS2YcLtPPgfjPHG2Rik5AamNVMmFWEFNDEABVgbgTRhyM332TBuAFAd89poypZPyOhYpFmjui2tFNUaO5lWung"
+          src="/brands/gopaylogo.webp"
         />
         <div className={styles.brandLabelContainer}>
           <span className={styles.brandLine}></span>
@@ -64,7 +67,7 @@ function HeroMain() {
             <span className="block lg:inline">sin salir de casa</span>
           </h1>
           <p className={styles.heroDescription}>
-            9 de cada 10 personas son aprobadas con solo su INE. Consegui hoy tu smartphone con pagos semanales y sin complicaciones.
+            9 de cada 10 personas son aprobadas con solo su INE. Adquiere hoy tu smartphone con pagos semanales y sin complicaciones.
           </p>
           <div className={styles.heroButtonsContainer}>
             <a
@@ -77,13 +80,20 @@ function HeroMain() {
               ¡Recibe tu equipo hoy en casa!
             </a>
           </div>
+
+          <div className={styles.counterWrapper}>
+            <div className={styles.counterPill}>
+              <span className="material-symbols-outlined text-xl" aria-hidden="true">group</span>
+              +3,000
+            </div>
+          </div>
         </div>
         <div className={styles.heroImageContainer}>
           <div className={styles.heroImageGlow}></div>
           <img
             alt="Smartphones premium"
             className={styles.heroImage}
-            src="/brands/chica1.webp"
+            src="/brands/chica2.webp"
           />
         </div>
       </div>

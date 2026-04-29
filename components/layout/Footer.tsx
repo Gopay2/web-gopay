@@ -33,7 +33,7 @@ export default function Footer() {
             <img
               alt="GoPay Logo"
               className={styles.logoImage}
-              src="https://lh3.googleusercontent.com/aida/ADBb0uh6hzUjZCMnRQB2PP1w9wVrWu0iKRRol8bIm_zAu15EKcMZt6AeZxc8Ek0IJf78o28ibBuYTCDmUXACYvK73u1CzX1H2Z4w9piVC1XxsqivLXV2dpjFZuK_u0i3LCz7WgYtQ8g7hOc9dRUdMe1n-fktWL0g8rnCmVR5ZHq3jvffiYRUUlZNeGfrfS2YcLtPPgfjPHG2Rik5AamNVMmFWEFNDEABVgbgTRhyM332TBuAFAd89poypZPyOhYpFmjui2tFNUaO5lWung"
+              src="/brands/gopaylogo.webp"
             />
           </div>
           <p className={styles.brandDescription}>
