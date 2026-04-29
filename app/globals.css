@@ -53,6 +53,7 @@
   --font-display: var(--font-roboto);
   --font-body: var(--font-roboto);
   --font-label: var(--font-roboto);
+  --animate-peek: peek-slide 2.5s ease-in-out 1s;
 }
 
 @utility glass-effect {
@@ -75,6 +76,4 @@
   80% { transform: translateX(-5px); }
 }
 
-.animate-peek {
-  animation: peek-slide 2.5s ease-in-out 1s;
-}
+

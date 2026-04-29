@@ -50,6 +50,10 @@ function BrandIntroduction() {
  * Displays the main call to action, headline, and the showcase image.
  */
 function HeroMain() {
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "";
+  const message = "Hola, me gustaría saber más sobre el crédito de GoPay.";
+  const whatsappUrl = phoneNumber ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}` : "#";
+
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroContainer}>
@@ -63,12 +67,15 @@ function HeroMain() {
             9 de cada 10 personas son aprobadas con solo su INE. Consegui hoy tu smartphone con pagos semanales y sin complicaciones.
           </p>
           <div className={styles.heroButtonsContainer}>
-            <button
+            <a
               className={styles.heroApplyButton}
               style={{ backgroundColor: "#FF9933", color: "#001C3A" }}
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              ¡Aplica ya!
-            </button>
+              ¡Recibe tu equipo hoy en casa!
+            </a>
           </div>
         </div>
         <div className={styles.heroImageContainer}>
@@ -76,7 +83,7 @@ function HeroMain() {
           <img
             alt="Smartphones premium"
             className={styles.heroImage}
-            src="/brands/hero-image.webp"
+            src="/brands/chica1.webp"
           />
         </div>
       </div>

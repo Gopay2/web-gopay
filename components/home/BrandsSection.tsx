@@ -13,6 +13,10 @@ interface Brand {
  * Displays the supported brands available for the user to purchase.
  */
 export default function BrandsSection() {
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "";
+  const message = "Hola, me gustaría saber más sobre el crédito de GoPay.";
+  const whatsappUrl = phoneNumber ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}` : "#";
+
   const brands: Brand[] = [
     { name: "Apple", icon: "/brands/apple.webp" },
     { name: "Samsung", icon: "/brands/samsung.webp" },
@@ -57,10 +61,15 @@ export default function BrandsSection() {
             <p className="text-on-surface-variant mb-8 text-lg max-w-2xl">
               Obtén tu crédito GoPay hoy mismo y accede a más de 20 modelos disponibles de las marcas que más te gustan. El proceso es 100% digital y seguro.
             </p>
-            <button className="bg-secondary text-on-secondary-fixed px-8 py-3 rounded-md font-bold hover:scale-105 transition-all flex items-center gap-2">
+            <a 
+              className="bg-secondary text-on-secondary-fixed px-8 py-3 rounded-md font-bold hover:scale-105 transition-all inline-flex items-center gap-2"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="material-symbols-outlined text-xl" aria-hidden="true">bolt</span>
               Iniciar mi solicitud ahora
-            </button>
+            </a>
           </div>
         </article>
       </div>

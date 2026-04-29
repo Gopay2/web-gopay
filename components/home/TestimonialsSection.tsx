@@ -100,7 +100,7 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-6">
         <header className="text-center mb-20">
           <h2 className="font-headline text-4xl font-extrabold mb-4">Clientes satisfechos</h2>
-          <p className="text-on-surface-variant">Millones de personas ya confían en nuestro sistema de crédito.</p>
+          <p className="text-on-surface-variant">Testimonios de personas que confiaron en nuestro sistema de crédito.</p>
         </header>
         
         {/* Mobile Swipeable Carousel / Desktop Grid */}
