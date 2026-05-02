@@ -28,7 +28,7 @@ const styles = {
  */
 export default function HowItWorksSection() {
   return (
-    <section id="how" className={styles.sectionWrapper}>
+    <section id="como-funciona" className={styles.sectionWrapper}>
       <div className={styles.container}>
         <h2 className={styles.title}>Consigue tu celular con estas 2 opciones</h2>
         <p className={styles.subtitle}>

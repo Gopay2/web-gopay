@@ -26,7 +26,7 @@ export default function BrandsSection() {
   ];
 
   return (
-    <section className="py-32 bg-surface-container-lowest" id="brands">
+    <section className="py-32 bg-surface-container-lowest" id="marcas">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <header className="max-w-3xl mx-auto mb-16">
           <h2 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tight mb-6">

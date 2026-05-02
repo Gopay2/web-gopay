@@ -96,7 +96,7 @@ export default function TestimonialsSection() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-32 bg-surface overflow-hidden" id="testimonials">
+    <section ref={sectionRef} className="py-32 bg-surface overflow-hidden" id="testimonios">
       <div className="max-w-7xl mx-auto px-6">
         <header className="text-center mb-20">
           <h2 className="font-headline text-4xl font-extrabold mb-4">Clientes satisfechos</h2>
