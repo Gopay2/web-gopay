@@ -29,7 +29,7 @@ export default function FAQSection() {
   ];
 
   return (
-    <section className="py-24 bg-surface-container-low" id="faq">
+    <section className="py-24 bg-surface-container-low" id="preguntas-frecuentes">
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="font-headline text-3xl font-extrabold text-center mb-12">Preguntas frecuentes</h2>
         <div className="space-y-4">
