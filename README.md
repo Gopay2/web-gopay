@@ -1,0 +1,68 @@
+# GoPay - Plataforma de Gestión Empresarial
+
+Este repositorio contiene la aplicación web de GoPay, diseñada para la gestión de ventas, stock y métricas de negocio. El sistema utiliza una arquitectura moderna basada en Next.js, Supabase para la infraestructura de datos y autenticación, y Resend para la mensajería transaccional.
+
+## 🛠 Tecnologías Utilizadas
+
+- **Frontend**: Next.js (App Router) con React y Tailwind CSS.
+- **Base de Datos y Auth**: Supabase (PostgreSQL + GoTrue).
+- **Email Service**: Resend (vía SMTP personalizado).
+- **Hosting y DNS**: Vercel.
+
+## ⚙️ Configuración de Entorno
+
+Para que la aplicación funcione, es necesario configurar las siguientes variables en un archivo `.env.local` (local) o en el panel de Vercel (producción):
+
+- `NEXT_PUBLIC_SUPABASE_URL`: URL del proyecto de Supabase.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Llave pública anónima de Supabase.
+- `NEXT_PUBLIC_SITE_URL`: URL base de la aplicación (usada para redirecciones de correos).
+- `NEXT_PUBLIC_WHATSAPP_PHONE`: Número de teléfono para los botones de contacto de WhatsApp.
+
+## 📂 Estructura de Navegación (Webapp)
+
+La aplicación utiliza un sistema de rutas anidadas y layouts compartidos para optimizar la seguridad y la experiencia de usuario:
+
+- `/empresa/login`: Acceso de empleados.
+- `/empresa/register`: Registro de nuevas cuentas (Asigna rol `Closer` por defecto).
+- `/empresa/forgot-password`: Solicitud de recuperación de cuenta.
+- `/empresa/webapp`: Panel de control principal (Menú de apps).
+- `/empresa/webapp/ventas`: Registro de nuevos pedidos y notificaciones.
+- `/empresa/webapp/stock`: Consulta y actualización de stock (Solo Admin).
+- `/empresa/webapp/dashboard`: Métricas y rendimiento empresarial (Solo Admin).
+
+## 🔐 Gestión de Roles y Seguridad
+
+El sistema implementa **RBAC (Role-Based Access Control)** gestionado desde la base de datos:
+
+1.  **Roles**:
+    - `Admin`: Acceso total a todas las secciones y edición de datos.
+    - `Closer`: Acceso restringido únicamente al Formulario de Ventas.
+2.  **Sincronización**: Los perfiles se crean automáticamente mediante un Trigger en Supabase tras el registro exitoso.
+3.  **Protección**: La validación de roles se realiza en el servidor (Server Components) para prevenir accesos no autorizados.
+
+## 📧 Configuración de Mensajería (Resend)
+
+Para garantizar la entrega de correos institucionales, se ha integrado **Resend** como proveedor SMTP:
+
+### Configuración DNS (Vercel)
+Se deben añadir los registros MX, TXT y CNAME proporcionados por Resend en el panel de DNS de Vercel para el dominio `gopay.mx`.
+
+### Configuración SMTP en Supabase
+- **Host**: `smtp.resend.com`
+- **Port**: `587`
+- **User**: `resend`
+- **Password**: `[API_KEY_RESEND]`
+- **Sender**: `noreply@gopay.mx`
+
+## 🚀 Despliegue en Producción
+
+Para garantizar el funcionamiento de los flujos de autenticación en producción, se deben cumplir los siguientes requisitos:
+
+1.  **Variables de Entorno**: Configurar `NEXT_PUBLIC_SITE_URL` en Vercel con el dominio de producción (ej: `https://gopay.mx`).
+2.  **Redirect URLs**: En Supabase (Authentication > URL Configuration), añadir las siguientes URLs permitidas:
+    - `https://tu-dominio.com/auth/callback`
+    - `https://tu-dominio.com/empresa/update-password`
+3.  **Email Confirmation**: Asegurarse de que "Confirm Email" esté activado en el panel de Supabase para mayor seguridad.
+
+---
+*Documento de uso interno - GoPay 2026*
