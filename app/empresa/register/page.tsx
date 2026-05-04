@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import { signup } from "../login/actions";
 import { useSearchParams } from "next/navigation";
@@ -23,71 +23,79 @@ const styles = {
   error: "bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-xl text-xs text-center relative z-10 mb-4"
 };
 
-export default function RegisterPage() {
+function RegisterContent() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.loginCard}>
-        {/* Efecto de brillo sutil */}
-        <div className={styles.glow} />
-        
-        <Link href="/empresa">
-          <img 
-            src="/brands/gopaylogo.webp" 
-            alt="GoPay Logo" 
-            className={styles.logo}
-          />
-        </Link>
-        
-        <h1 className={styles.title}>Crear Cuenta</h1>
-        <p className={styles.subtitle}>Registra tu usuario para comenzar</p>
+    <div className={styles.loginCard}>
+      {/* Efecto de brillo sutil */}
+      <div className={styles.glow} />
+      
+      <Link href="/empresa">
+        <img 
+          src="/brands/gopaylogo.webp" 
+          alt="GoPay Logo" 
+          className={styles.logo}
+        />
+      </Link>
+      
+      <h1 className={styles.title}>Crear Cuenta</h1>
+      <p className={styles.subtitle}>Registra tu usuario para comenzar</p>
 
-        {error && (
-          <div className={styles.error}>
-            {error}
-          </div>
-        )}
-        
-        <form className={styles.form} action={signup}>
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>Correo Electrónico</label>
-            <input 
-              name="email"
-              type="email" 
-              placeholder="tu@email.com" 
-              className={styles.input}
-              required
-            />
-          </div>
-          
-          <div className={styles.inputGroup}>
-            <label className={styles.label}>Contraseña</label>
-            <input 
-              name="password"
-              type="password" 
-              placeholder="Crea una contraseña" 
-              className={styles.input}
-              required
-              minLength={6}
-            />
-          </div>
-          
-          <p className="text-[10px] text-slate-500 px-1">
-            Al registrarte, aceptas nuestros términos de servicio y políticas de privacidad.
-          </p>
-          
-          <SubmitButton pendingText="Creando cuenta..." className={styles.button}>
-            Registrarse
-          </SubmitButton>
-        </form>
-        
-        <div className={styles.footerLink}>
-          ¿Ya tienes cuenta? 
-          <Link href="/empresa/login" className={styles.link}>Inicia sesión</Link>
+      {error && (
+        <div className={styles.error}>
+          {error}
         </div>
+      )}
+      
+      <form className={styles.form} action={signup}>
+        <div className={styles.inputGroup}>
+          <label className={styles.label}>Correo Electrónico</label>
+          <input 
+            name="email"
+            type="email" 
+            placeholder="tu@email.com" 
+            className={styles.input}
+            required
+          />
+        </div>
+        
+        <div className={styles.inputGroup}>
+          <label className={styles.label}>Contraseña</label>
+          <input 
+            name="password"
+            type="password" 
+            placeholder="Crea una contraseña" 
+            className={styles.input}
+            required
+            minLength={6}
+          />
+        </div>
+        
+        <p className="text-[10px] text-slate-500 px-1">
+          Al registrarte, aceptas nuestros términos de servicio y políticas de privacidad.
+        </p>
+        
+        <SubmitButton pendingText="Creando cuenta..." className={styles.button}>
+          Registrarse
+        </SubmitButton>
+      </form>
+      
+      <div className={styles.footerLink}>
+        ¿Ya tienes cuenta? 
+        <Link href="/empresa/login" className={styles.link}>Inicia sesión</Link>
       </div>
+    </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <div className={styles.wrapper}>
+      <Suspense fallback={<div className="text-slate-500">Cargando...</div>}>
+        <RegisterContent />
+      </Suspense>
       
       <Link href="/" className="mt-8 text-slate-500 hover:text-slate-300 text-sm transition-colors flex items-center gap-2 group">
         <span className="material-symbols-outlined text-base group-hover:-translate-x-1 transition-transform">arrow_back</span>
@@ -96,3 +104,4 @@ export default function RegisterPage() {
     </div>
   );
 }
+
