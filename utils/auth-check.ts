@@ -1,0 +1,19 @@
+import { createClient } from "./supabase/server";
+
+export async function getUserRole() {
+  const supabase = await createClient();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .single();
+    
+  return profile?.role || "Closer";
+}
+
+/**
+ * Verifica si el rol del usuario está en la lista permitida.
+ * Devuelve true si está permitido, false si no.
+ */
+export function isAllowed(userRole: string, allowedRoles: string[]) {
+  return allowedRoles.includes(userRole);
+}

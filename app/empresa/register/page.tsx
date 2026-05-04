@@ -2,14 +2,14 @@
 
 import React from "react";
 import Link from "next/link";
-import { login } from "./actions";
+import { signup } from "../login/actions";
 import { useSearchParams } from "next/navigation";
 import SubmitButton from "@/components/empresa/SubmitButton";
 
 const styles = {
   wrapper: "min-h-screen bg-slate-950 flex flex-col items-center justify-center p-4 font-[family-name:var(--font-outfit)]",
   loginCard: "w-full max-w-md bg-slate-900/40 backdrop-blur-xl border border-slate-800 p-8 rounded-3xl shadow-2xl relative overflow-hidden group",
-  glow: "absolute -top-24 -right-24 w-48 h-48 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors",
+  glow: "absolute -bottom-24 -left-24 w-48 h-48 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-colors",
   logo: "w-auto h-20 mb-10 mx-auto object-contain relative z-10 scale-[2.5]",
   title: "text-2xl font-bold text-slate-100 text-center mb-2 relative z-10",
   subtitle: "text-slate-400 text-center mb-8 text-sm relative z-10",
@@ -23,7 +23,7 @@ const styles = {
   error: "bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-xl text-xs text-center relative z-10 mb-4"
 };
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const searchParams = useSearchParams();
   const error = searchParams.get("error");
 
@@ -41,8 +41,8 @@ export default function LoginPage() {
           />
         </Link>
         
-        <h1 className={styles.title}>Acceso Empleados</h1>
-        <p className={styles.subtitle}>Ingresa tus credenciales para continuar</p>
+        <h1 className={styles.title}>Crear Cuenta</h1>
+        <p className={styles.subtitle}>Registra tu usuario para comenzar</p>
 
         {error && (
           <div className={styles.error}>
@@ -50,7 +50,7 @@ export default function LoginPage() {
           </div>
         )}
         
-        <form className={styles.form} action={login}>
+        <form className={styles.form} action={signup}>
           <div className={styles.inputGroup}>
             <label className={styles.label}>Correo Electrónico</label>
             <input 
@@ -67,28 +67,25 @@ export default function LoginPage() {
             <input 
               name="password"
               type="password" 
-              placeholder="••••••••" 
+              placeholder="Crea una contraseña" 
               className={styles.input}
               required
+              minLength={6}
             />
           </div>
           
-          <div className="flex items-center justify-between px-1">
-            <label className="flex items-center gap-2 cursor-pointer group">
-              <input type="checkbox" className="w-4 h-4 rounded border-slate-800 bg-slate-950 text-secondary focus:ring-secondary/20" />
-              <span className="text-xs text-slate-400 group-hover:text-slate-300 transition-colors">Recordarme</span>
-            </label>
-            <Link href="/empresa/forgot-password" className="text-xs text-slate-500 hover:text-secondary transition-colors">¿Olvidaste tu contraseña?</Link>
-          </div>
+          <p className="text-[10px] text-slate-500 px-1">
+            Al registrarte, aceptas nuestros términos de servicio y políticas de privacidad.
+          </p>
           
-          <SubmitButton pendingText="Iniciando sesión..." className={styles.button}>
-            Iniciar Sesión
+          <SubmitButton pendingText="Creando cuenta..." className={styles.button}>
+            Registrarse
           </SubmitButton>
         </form>
         
         <div className={styles.footerLink}>
-          ¿No tienes cuenta? 
-          <Link href="/empresa/register" className={styles.link}>Regístrate</Link>
+          ¿Ya tienes cuenta? 
+          <Link href="/empresa/login" className={styles.link}>Inicia sesión</Link>
         </div>
       </div>
       
