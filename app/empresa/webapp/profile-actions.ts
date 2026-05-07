@@ -26,7 +26,7 @@ export async function updateUsername(username: string) {
 
   // 3. Intentar actualizar el perfil
   const { error: updateError } = await supabase
-    .from("profiles")
+    .from("perfiles")
     .update({ username: cleanUsername })
     .eq("id", user.id);
 

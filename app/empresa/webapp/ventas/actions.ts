@@ -11,7 +11,7 @@ export async function submitVenta(formData: FormData) {
   // Obtenemos el perfil del usuario logueado
   const { data: { user } } = await supabase.auth.getUser();
   const { data: profile } = await supabase
-    .from("profiles")
+    .from("perfiles")
     .select("role, username")
     .eq("id", user?.id)
     .single();

@@ -34,7 +34,7 @@ export default async function WebAppLayout({
   }
 
   const { data: profile } = await supabase
-    .from("profiles")
+    .from("perfiles")
     .select("role, username")
     .single();
 

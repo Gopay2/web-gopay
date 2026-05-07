@@ -14,7 +14,7 @@ const styles = {
 export default async function StockPage() {
   const { role: userRole } = await getUserProfile();
 
-  if (!isAllowed(userRole, ["Admin"])) {
+  if (!isAllowed(userRole, ["Admin", "Supervisor", "Closer"])) {
     return <AccessDenied role={userRole} sectionName="Stock de Ventas" />;
   }
 

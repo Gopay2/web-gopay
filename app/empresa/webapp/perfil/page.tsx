@@ -11,7 +11,7 @@ export default async function PerfilPage() {
   if (!user) return redirect("/empresa/login");
 
   const { data: profile } = await supabase
-    .from("profiles")
+    .from("perfiles")
     .select("role, username, email")
     .single();
 
